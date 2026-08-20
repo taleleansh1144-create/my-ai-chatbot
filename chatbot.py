@@ -23,7 +23,8 @@ HTML = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My AI</title>
+    <title>🤖 HM AI</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -101,37 +102,50 @@ HTML = """
             font-size: 16px;
             cursor: pointer;
         }
+
+        button:hover {
+            background: #0d8f70;
+        }
     </style>
 </head>
 
 <body>
 
 <div class="header">
-    🤖 My AI
+    🤖 HM AI
 </div>
 
 <div class="chat" id="chat">
+
     <div class="message ai">
-        Hello! 👋 I'm your AI assistant. How can I help you?
+        Hello! 👋 I'm HM AI. How can I help you?
     </div>
+
 </div>
 
 <div class="input-area">
+
     <div class="input-box">
+
         <input
             id="message"
             type="text"
-            placeholder="Message My AI..."
+            placeholder="Message HM AI..."
             onkeydown="if(event.key === 'Enter') sendMessage()"
         >
+
         <button onclick="sendMessage()">Send</button>
+
     </div>
+
 </div>
 
 <script>
+
 async function sendMessage() {
 
     const input = document.getElementById("message");
+
     const message = input.value.trim();
 
     if (!message) return;
@@ -139,14 +153,19 @@ async function sendMessage() {
     const chat = document.getElementById("chat");
 
     chat.innerHTML += `
-        <div class="message user">${message}</div>
+        <div class="message user">
+            ${message}
+        </div>
     `;
 
     input.value = "";
 
     const thinking = document.createElement("div");
+
     thinking.className = "message ai";
+
     thinking.innerText = "Thinking...";
+
     chat.appendChild(thinking);
 
     chat.scrollTop = chat.scrollHeight;
@@ -154,28 +173,36 @@ async function sendMessage() {
     try {
 
         const response = await fetch("/chat", {
+
             method: "POST",
+
             headers: {
                 "Content-Type": "application/json"
             },
+
             body: JSON.stringify({
                 message: message
             })
+
         });
 
         const data = await response.json();
 
         thinking.innerText = data.reply;
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         thinking.innerText =
-            "❌ Could not connect to the AI server.";
+            "❌ Could not connect to HM AI.";
 
     }
 
     chat.scrollTop = chat.scrollHeight;
+
 }
+
 </script>
 
 </body>
@@ -196,6 +223,7 @@ def chat_message():
         data = request.get_json()
 
         if not data:
+
             return jsonify({
                 "reply": "Please send a message."
             }), 400
@@ -203,16 +231,23 @@ def chat_message():
         user_message = data.get("message", "").strip()
 
         if not user_message:
+
             return jsonify({
                 "reply": "Please type a message."
             }), 400
 
         response = chat.send_message(
+
             message=user_message,
+
             config=types.GenerateContentConfig(
+
                 temperature=0.7,
+
                 max_output_tokens=500
+
             )
+
         )
 
         return jsonify({
@@ -224,13 +259,18 @@ def chat_message():
         print("Gemini error:", e)
 
         return jsonify({
-            "reply": "Sorry, something went wrong with the AI."
+            "reply": "Sorry, something went wrong with HM AI."
         }), 500
 
 
 if __name__ == "__main__":
+
     app.run(
+
         host="0.0.0.0",
+
         port=int(os.environ.get("PORT", 5000)),
+
         debug=False
+
     )
