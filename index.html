@@ -3,433 +3,1095 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>🤖 HM AI</title>
+    <title>HM AI</title>
 
-<style>
+    <!-- Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-* {
-    box-sizing: border-box;
-}
+    <!-- Security for Markdown HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
 
-body {
 
-    margin: 0;
+    <style>
 
-    font-family: Arial, Helvetica, sans-serif;
+        * {
+            box-sizing: border-box;
+        }
 
-    background:
-        radial-gradient(
-            circle at top,
-            #111b3d,
-            #050814 45%,
-            #02030a
-        );
 
-    color: white;
+        html,
+        body {
+            margin: 0;
+            padding: 0;
 
-    height: 100vh;
+            width: 100%;
+            height: 100%;
 
-    overflow: hidden;
-}
+            font-family:
+                Inter,
+                Arial,
+                Helvetica,
+                sans-serif;
 
+            background: #05070d;
+            color: #ffffff;
+        }
 
-/* HEADER */
 
-.header {
+        body {
+            overflow: hidden;
+        }
 
-    height: 115px;
 
-    display: flex;
+        /* =====================================================
+           APP
+        ===================================================== */
 
-    align-items: center;
+        .app {
+            display: flex;
 
-    padding: 15px 35px;
+            width: 100%;
+            height: 100vh;
 
-    border-bottom: 1px solid #263d8c;
+            background:
+                radial-gradient(
+                    circle at 50% -20%,
+                    rgba(55, 90, 255, 0.18),
+                    transparent 40%
+                ),
+                #05070d;
+        }
 
-    background:
-        linear-gradient(
-            90deg,
-            #07152d,
-            #100b2d
-        );
-}
 
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
 
-.robot-logo {
+        .sidebar {
 
-    width: 75px;
+            width: 250px;
 
-    height: 75px;
+            height: 100%;
 
-    border-radius: 50%;
+            padding: 18px;
 
-    display: flex;
+            display: flex;
+            flex-direction: column;
 
-    justify-content: center;
+            background:
+                rgba(10, 13, 23, 0.96);
 
-    align-items: center;
+            border-right:
+                1px solid rgba(100, 120, 180, 0.15);
+        }
 
-    font-size: 42px;
 
-    background:
-        linear-gradient(
-            135deg,
-            #071c39,
-            #1b1241
-        );
+        .sidebar-logo {
 
-    border: 2px solid #21bfff;
+            display: flex;
 
-    box-shadow:
-        0 0 20px #008cff,
-        0 0 35px #713cff;
+            align-items: center;
 
-}
+            gap: 12px;
 
+            margin-bottom: 25px;
+        }
 
-.brand {
 
-    margin-left: 20px;
+        .sidebar-icon {
 
-}
+            width: 44px;
+            height: 44px;
 
+            display: flex;
 
-.brand-name {
+            justify-content: center;
+            align-items: center;
 
-    font-size: 38px;
+            border-radius: 14px;
 
-    font-weight: bold;
+            background:
+                linear-gradient(
+                    135deg,
+                    #1599ff,
+                    #713cff
+                );
 
-    background:
-        linear-gradient(
-            90deg,
-            #00d9ff,
-            #4772ff,
-            #bd4dff
-        );
+            box-shadow:
+                0 0 20px rgba(80, 90, 255, 0.35);
+        }
 
-    -webkit-background-clip: text;
 
-    -webkit-text-fill-color: transparent;
+        .sidebar-title {
 
-}
+            font-size: 20px;
 
+            font-weight: 700;
+        }
 
-.brand-title {
 
-    margin-top: 5px;
+        .sidebar-subtitle {
 
-    font-size: 14px;
+            color: #7f8aa3;
 
-    letter-spacing: 5px;
+            font-size: 10px;
 
-}
+            letter-spacing: 2px;
+        }
 
 
-.brand-subtitle {
+        .new-chat {
 
-    margin-top: 8px;
+            width: 100%;
 
-    color: #aeb7ce;
+            padding: 13px;
 
-    font-size: 12px;
+            display: flex;
 
-    letter-spacing: 2px;
+            align-items: center;
 
-}
+            justify-content: center;
 
+            gap: 9px;
 
-/* CHAT */
+            border: 1px solid
+                rgba(90, 120, 255, 0.45);
 
-.chat {
+            border-radius: 12px;
 
-    height: calc(100vh - 205px);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(50, 90, 255, 0.2),
+                    rgba(120, 50, 255, 0.18)
+                );
 
-    overflow-y: auto;
+            color: white;
 
-    padding: 35px 7%;
+            cursor: pointer;
 
-}
+            font-size: 14px;
 
+            transition: 0.2s;
+        }
 
-.message-row {
 
-    display: flex;
+        .new-chat:hover {
 
-    margin-bottom: 25px;
+            transform: translateY(-1px);
 
-}
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(50, 110, 255, 0.35),
+                    rgba(120, 50, 255, 0.3)
+                );
+        }
 
 
-.message-row.user {
+        .sidebar-spacer {
+            flex: 1;
+        }
 
-    justify-content: flex-end;
 
-}
+        .clear-chat {
 
+            width: 100%;
 
-.ai-icon {
+            padding: 12px;
 
-    width: 45px;
+            display: flex;
 
-    height: 45px;
+            align-items: center;
 
-    border-radius: 50%;
+            justify-content: center;
 
-    display: flex;
+            gap: 9px;
 
-    justify-content: center;
+            border: 1px solid
+                rgba(255, 80, 100, 0.2);
 
-    align-items: center;
+            border-radius: 12px;
 
-    font-size: 24px;
+            background:
+                rgba(255, 50, 70, 0.06);
 
-    margin-right: 12px;
+            color: #ff8d9a;
 
-    background: #0d1930;
+            cursor: pointer;
 
-    border: 1px solid #1b8cff;
+            transition: 0.2s;
+        }
 
-}
 
+        .clear-chat:hover {
 
-.message-content {
+            background:
+                rgba(255, 50, 70, 0.13);
+        }
 
-    max-width: 75%;
 
-}
+        .sidebar-footer {
 
+            margin-top: 15px;
 
-.message {
+            text-align: center;
 
-    padding: 16px 20px;
+            color: #555e72;
 
-    border-radius: 17px;
+            font-size: 10px;
+        }
 
-    font-size: 16px;
 
-    line-height: 1.6;
+        /* =====================================================
+           MAIN
+        ===================================================== */
 
-    white-space: pre-wrap;
+        .main {
 
-    border: 1px solid #283958;
+            flex: 1;
 
-}
+            min-width: 0;
 
+            height: 100%;
 
-.ai-message {
+            display: flex;
 
-    background:
-        linear-gradient(
-            135deg,
-            #162136,
-            #0c1425
-        );
+            flex-direction: column;
+        }
 
-}
 
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
-.user-message {
+        .header {
 
-    background:
-        linear-gradient(
-            135deg,
-            #4b3db5,
-            #7739bd
-        );
+            height: 76px;
 
-}
+            flex-shrink: 0;
 
+            display: flex;
 
-.time {
+            align-items: center;
 
-    color: #7f8aa3;
+            padding: 10px 25px;
 
-    font-size: 11px;
+            border-bottom:
+                1px solid rgba(100, 120, 180, 0.14);
 
-    margin-top: 5px;
+            background:
+                rgba(6, 9, 18, 0.82);
 
-    margin-left: 10px;
+            backdrop-filter:
+                blur(15px);
+        }
 
-}
 
+        .mobile-menu {
 
-/* INPUT */
+            display: none;
 
-.bottom {
+            margin-right: 12px;
 
-    height: 90px;
+            border: none;
 
-    padding: 10px 5% 15px;
+            background: transparent;
 
-}
+            color: white;
 
+            cursor: pointer;
+        }
 
-.input-container {
 
-    max-width: 1000px;
+        .header-icon {
 
-    margin: auto;
+            width: 48px;
+            height: 48px;
 
-    height: 58px;
+            display: flex;
 
-    display: flex;
+            justify-content: center;
+            align-items: center;
 
-    align-items: center;
+            border-radius: 15px;
 
-    padding-left: 18px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #00aaff,
+                    #713cff
+                );
 
-    border-radius: 18px;
+            box-shadow:
+                0 0 22px rgba(80, 100, 255, 0.35);
+        }
 
-    border: 1px solid #3067d8;
 
-    background: #0d162b;
+        .header-info {
 
-}
+            margin-left: 13px;
+        }
 
 
-#message {
+        .header-name {
 
-    flex: 1;
+            font-size: 21px;
 
-    background: transparent;
+            font-weight: 700;
+        }
 
-    border: none;
 
-    outline: none;
+        .header-status {
 
-    color: white;
+            display: flex;
 
-    font-size: 16px;
+            align-items: center;
 
-}
+            gap: 6px;
 
+            margin-top: 3px;
 
-#message::placeholder {
+            color: #8993a8;
 
-    color: #7d879d;
+            font-size: 11px;
+        }
 
-}
 
+        .status-dot {
 
-.send {
+            width: 7px;
+            height: 7px;
 
-    width: 52px;
+            border-radius: 50%;
 
-    height: 48px;
+            background: #36e58b;
 
-    margin-right: 5px;
+            box-shadow:
+                0 0 8px #36e58b;
+        }
 
-    border: none;
 
-    border-radius: 14px;
+        /* =====================================================
+           CHAT AREA
+        ===================================================== */
 
-    color: white;
+        .chat {
 
-    font-size: 22px;
+            flex: 1;
 
-    cursor: pointer;
+            overflow-y: auto;
 
-    background:
-        linear-gradient(
-            135deg,
-            #3658ff,
-            #8b38ff
-        );
+            padding: 35px 7% 25px;
 
-}
+            scroll-behavior: smooth;
+        }
 
 
-.footer {
+        .chat::-webkit-scrollbar {
 
-    text-align: center;
+            width: 7px;
+        }
 
-    color: #69738a;
 
-    font-size: 10px;
+        .chat::-webkit-scrollbar-thumb {
 
-    margin-top: 7px;
+            background: #252d40;
 
-}
+            border-radius: 10px;
+        }
 
 
-/* MOBILE */
+        .message-row {
 
-@media (max-width: 700px) {
+            display: flex;
 
-    .header {
+            align-items: flex-start;
 
-        height: 90px;
+            margin-bottom: 28px;
 
-        padding: 10px 15px;
+            animation:
+                messageIn 0.25s ease;
+        }
 
-    }
 
+        @keyframes messageIn {
 
-    .robot-logo {
+            from {
+                opacity: 0;
+                transform: translateY(7px);
+            }
 
-        width: 60px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        height: 60px;
 
-        font-size: 32px;
+        .message-row.user {
 
-    }
+            justify-content: flex-end;
+        }
 
 
-    .brand {
+        .ai-avatar {
 
-        margin-left: 12px;
+            width: 42px;
+            height: 42px;
 
-    }
+            flex-shrink: 0;
 
+            display: flex;
 
-    .brand-name {
+            justify-content: center;
+            align-items: center;
 
-        font-size: 28px;
+            border-radius: 13px;
 
-    }
+            background:
+                linear-gradient(
+                    135deg,
+                    #071c36,
+                    #211144
+                );
 
+            border:
+                1px solid rgba(60, 160, 255, 0.5);
 
-    .brand-title {
+            box-shadow:
+                0 0 16px rgba(30, 130, 255, 0.2);
 
-        font-size: 9px;
+            margin-right: 12px;
+        }
 
-        letter-spacing: 3px;
 
-    }
+        .message-content {
 
+            max-width: min(760px, 80%);
+        }
 
-    .brand-subtitle {
 
-        display: none;
+        .message {
 
-    }
+            padding: 15px 18px;
 
+            border-radius: 17px;
 
-    .chat {
+            font-size: 15px;
 
-        height: calc(100vh - 180px);
+            line-height: 1.65;
 
-        padding: 20px 12px;
+            border:
+                1px solid rgba(100, 125, 180, 0.18);
 
-    }
+            overflow-wrap: anywhere;
+        }
 
 
-    .message-content {
+        .ai-message {
 
-        max-width: 85%;
+            background:
+                linear-gradient(
+                    135deg,
+                    #111a2c,
+                    #0b1220
+                );
 
-    }
+            border-top-left-radius: 5px;
+        }
 
-}
 
-</style>
+        .user-message {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b3ac0,
+                    #7137b9
+                );
+
+            border-top-right-radius: 5px;
+        }
+
+
+        .time {
+
+            color: #596378;
+
+            font-size: 10px;
+
+            margin-top: 6px;
+
+            padding-left: 5px;
+        }
+
+
+        .user .time {
+
+            text-align: right;
+
+            padding-right: 5px;
+        }
+
+
+        /* =====================================================
+           MARKDOWN
+        ===================================================== */
+
+        .ai-message p {
+
+            margin: 7px 0;
+        }
+
+
+        .ai-message p:first-child {
+            margin-top: 0;
+        }
+
+
+        .ai-message p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .ai-message h1,
+        .ai-message h2,
+        .ai-message h3 {
+
+            margin:
+                14px 0 8px;
+
+            line-height: 1.3;
+        }
+
+
+        .ai-message h1 {
+            font-size: 24px;
+        }
+
+
+        .ai-message h2 {
+            font-size: 20px;
+        }
+
+
+        .ai-message h3 {
+            font-size: 17px;
+        }
+
+
+        .ai-message ul,
+        .ai-message ol {
+
+            padding-left: 25px;
+
+            margin: 8px 0;
+        }
+
+
+        .ai-message li {
+
+            margin: 4px 0;
+        }
+
+
+        .ai-message strong {
+
+            font-weight: 700;
+
+            color: #ffffff;
+        }
+
+
+        .ai-message blockquote {
+
+            margin: 12px 0;
+
+            padding:
+                8px 14px;
+
+            border-left:
+                3px solid #637cff;
+
+            background:
+                rgba(100, 120, 255, 0.08);
+
+            color: #b5bdd0;
+        }
+
+
+        .ai-message code {
+
+            padding:
+                3px 6px;
+
+            border-radius: 6px;
+
+            background:
+                #050912;
+
+            color: #8bdcff;
+
+            font-family:
+                Consolas,
+                monospace;
+
+            font-size: 13px;
+        }
+
+
+        .ai-message pre {
+
+            position: relative;
+
+            margin: 12px 0;
+
+            padding: 16px;
+
+            overflow-x: auto;
+
+            border-radius: 12px;
+
+            background:
+                #050912;
+
+            border:
+                1px solid #202a40;
+        }
+
+
+        .ai-message pre code {
+
+            padding: 0;
+
+            background: transparent;
+
+            color: #d8e2f5;
+
+            font-size: 13px;
+        }
+
+
+        .ai-message table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 12px 0;
+
+            font-size: 13px;
+        }
+
+
+        .ai-message th,
+        .ai-message td {
+
+            padding: 8px;
+
+            border:
+                1px solid #273149;
+
+            text-align: left;
+        }
+
+
+        .ai-message th {
+
+            background: #141d31;
+        }
+
+
+        .ai-message a {
+
+            color: #65b8ff;
+
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           COPY BUTTON
+        ===================================================== */
+
+        .copy-button {
+
+            margin-top: 8px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            padding:
+                6px 9px;
+
+            border: 1px solid #27344d;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,0.03);
+
+            color: #8994aa;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            transition: 0.2s;
+        }
+
+
+        .copy-button:hover {
+
+            color: white;
+
+            background:
+                rgba(255,255,255,0.08);
+        }
+
+
+        /* =====================================================
+           TYPING
+        ===================================================== */
+
+        .typing {
+
+            display: flex;
+
+            gap: 5px;
+
+            padding: 5px 2px;
+        }
+
+
+        .typing span {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #73a7ff;
+
+            animation:
+                typing 1.2s infinite;
+        }
+
+
+        .typing span:nth-child(2) {
+
+            animation-delay: 0.15s;
+        }
+
+
+        .typing span:nth-child(3) {
+
+            animation-delay: 0.3s;
+        }
+
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+
+                opacity: 0.25;
+
+                transform: translateY(0);
+            }
+
+            30% {
+
+                opacity: 1;
+
+                transform: translateY(-4px);
+            }
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .bottom {
+
+            flex-shrink: 0;
+
+            padding:
+                10px 5% 12px;
+        }
+
+
+        .input-container {
+
+            max-width: 900px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            min-height: 58px;
+
+            padding:
+                9px 9px 9px 17px;
+
+            border:
+                1px solid rgba(80, 125, 255, 0.5);
+
+            border-radius: 18px;
+
+            background:
+                rgba(12, 20, 38, 0.94);
+
+            box-shadow:
+                0 0 30px
+                rgba(50, 90, 255, 0.08);
+        }
+
+
+        #message {
+
+            flex: 1;
+
+            min-height: 38px;
+
+            max-height: 150px;
+
+            resize: none;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            color: white;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            padding: 8px 5px;
+        }
+
+
+        #message::placeholder {
+
+            color: #68738a;
+        }
+
+
+        .send {
+
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            border: none;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #3859ff,
+                    #8b38ff
+                );
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .send:hover {
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 18px
+                rgba(100, 70, 255, 0.45);
+        }
+
+
+        .send:disabled {
+
+            opacity: 0.5;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        .input-hint {
+
+            max-width: 900px;
+
+            margin: 7px auto 0;
+
+            text-align: center;
+
+            color: #4f586c;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+
+                position: fixed;
+
+                left: -270px;
+
+                top: 0;
+
+                z-index: 100;
+
+                width: 260px;
+
+                transition: 0.25s;
+
+                box-shadow:
+                    10px 0 40px rgba(0,0,0,0.5);
+            }
+
+
+            .sidebar.open {
+
+                left: 0;
+            }
+
+
+            .mobile-menu {
+
+                display: block;
+            }
+
+
+            .header {
+
+                height: 68px;
+
+                padding:
+                    8px 13px;
+            }
+
+
+            .header-icon {
+
+                width: 42px;
+                height: 42px;
+            }
+
+
+            .header-name {
+
+                font-size: 18px;
+            }
+
+
+            .chat {
+
+                padding:
+                    20px 12px 15px;
+            }
+
+
+            .message-content {
+
+                max-width: 87%;
+            }
+
+
+            .message {
+
+                font-size: 14px;
+
+                padding:
+                    13px 15px;
+            }
+
+
+            .bottom {
+
+                padding:
+                    7px 8px 8px;
+            }
+
+
+            .input-hint {
+
+                display: none;
+            }
+
+
+            .brand-subtitle {
+
+                display: none;
+            }
+        }
+
+
+        @media (max-width: 450px) {
+
+            .message-content {
+
+                max-width: 91%;
+            }
+
+
+            .ai-avatar {
+
+                width: 36px;
+                height: 36px;
+
+                font-size: 18px;
+            }
+
+
+            .header-icon {
+
+                width: 38px;
+                height: 38px;
+            }
+
+
+            .header-name {
+
+                font-size: 17px;
+            }
+        }
+
+    </style>
 
 </head>
 
@@ -437,91 +1099,378 @@ body {
 <body>
 
 
-<!-- HEADER -->
-
-<div class="header">
-
-    <div class="robot-logo">
-        🤖
-    </div>
-
-    <div class="brand">
-
-        <div class="brand-name">
-            HM AI
-        </div>
-
-        <div class="brand-title">
-            HUMAN MADE AI
-        </div>
-
-        <div class="brand-subtitle">
-            MADE BY HUMAN, DESIGNED FOR FUTURE
-        </div>
-
-    </div>
-
-</div>
+<div class="app">
 
 
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
 
-<!-- CHAT -->
-
-<div class="chat" id="chat">
+    <aside class="sidebar" id="sidebar">
 
 
-    <div class="message-row">
+        <div class="sidebar-logo">
 
-        <div class="ai-icon">
-            🤖
-        </div>
+            <div class="sidebar-icon">
 
-        <div class="message-content">
+                <!-- Robot SVG -->
 
-            <div class="message ai-message">
-Hello! 👋
+                <svg width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="1.8">
 
-I'm HM AI. How can I help you today?
+                    <rect x="4"
+                          y="7"
+                          width="16"
+                          height="12"
+                          rx="3"/>
+
+                    <path d="M12 3v4"/>
+
+                    <circle cx="12"
+                            cy="2.5"
+                            r="1"/>
+
+                    <circle cx="9"
+                            cy="12"
+                            r="1"/>
+
+                    <circle cx="15"
+                            cy="12"
+                            r="1"/>
+
+                    <path d="M8 16h8"/>
+
+                </svg>
+
             </div>
 
-            <div class="time">
-                HM AI
+
+            <div>
+
+                <div class="sidebar-title">
+                    HM AI
+                </div>
+
+                <div class="sidebar-subtitle">
+                    HUMAN MADE AI
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-
-</div>
-
-
-
-<!-- INPUT -->
-
-<div class="bottom">
-
-    <div class="input-container">
-
-        <input
-            id="message"
-            type="text"
-            placeholder="Message HM AI..."
-            autocomplete="off"
-        >
+        <!-- NEW CHAT -->
 
         <button
-            class="send"
-            onclick="sendMessage()"
+            class="new-chat"
+            onclick="newChat()"
         >
-            ➤
+
+            <svg width="18"
+                 height="18"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2">
+
+                <path d="M12 5v14"/>
+                <path d="M5 12h14"/>
+
+            </svg>
+
+            New Chat
+
         </button>
 
-    </div>
 
-    <div class="footer">
-        © 2026 HM AI. All rights reserved.
-    </div>
+        <div class="sidebar-spacer"></div>
+
+
+        <!-- CLEAR CHAT -->
+
+        <button
+            class="clear-chat"
+            onclick="clearChat()"
+        >
+
+            <svg width="17"
+                 height="17"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2">
+
+                <polyline points="3 6 5 6 21 6"/>
+
+                <path d="M19 6l-1 14H6L5 6"/>
+
+                <path d="M10 11v5"/>
+                <path d="M14 11v5"/>
+
+                <path d="M9 6V4h6v2"/>
+
+            </svg>
+
+            Clear Chat
+
+        </button>
+
+
+        <div class="sidebar-footer">
+            HM AI • Human Made AI
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="mobile-menu"
+                onclick="toggleSidebar()"
+            >
+
+                <svg width="25"
+                     height="25"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2">
+
+                    <line x1="4"
+                          y1="6"
+                          x2="20"
+                          y2="6"/>
+
+                    <line x1="4"
+                          y1="12"
+                          x2="20"
+                          y2="12"/>
+
+                    <line x1="4"
+                          y1="18"
+                          x2="20"
+                          y2="18"/>
+
+                </svg>
+
+            </button>
+
+
+            <!-- AI ICON -->
+
+            <div class="header-icon">
+
+                <svg width="27"
+                     height="27"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="white"
+                     stroke-width="1.8">
+
+                    <rect x="4"
+                          y="7"
+                          width="16"
+                          height="12"
+                          rx="3"/>
+
+                    <path d="M12 3v4"/>
+
+                    <circle cx="12"
+                            cy="2.5"
+                            r="1"/>
+
+                    <circle cx="9"
+                            cy="12"
+                            r="1"/>
+
+                    <circle cx="15"
+                            cy="12"
+                            r="1"/>
+
+                    <path d="M8 16h8"/>
+
+                </svg>
+
+            </div>
+
+
+            <div class="header-info">
+
+                <div class="header-name">
+                    HM AI
+                </div>
+
+                <div class="header-status">
+
+                    <span class="status-dot"></span>
+
+                    Online
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             CHAT
+        ================================================== -->
+
+        <section
+            class="chat"
+            id="chat"
+        >
+
+
+            <!-- WELCOME -->
+
+            <div
+                class="message-row"
+                id="welcome-message"
+            >
+
+
+                <div class="ai-avatar">
+
+                    <svg width="23"
+                         height="23"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="#69baff"
+                         stroke-width="1.8">
+
+                        <rect x="4"
+                              y="7"
+                              width="16"
+                              height="12"
+                              rx="3"/>
+
+                        <path d="M12 3v4"/>
+
+                        <circle cx="12"
+                                cy="2.5"
+                                r="1"/>
+
+                        <circle cx="9"
+                                cy="12"
+                                r="1"/>
+
+                        <circle cx="15"
+                                cy="12"
+                                r="1"/>
+
+                        <path d="M8 16h8"/>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="message-content">
+
+                    <div class="message ai-message">
+
+                        <p>Hello! 👋</p>
+
+                        <p>
+                            I'm <strong>HM AI</strong>.
+                            How can I help you today?
+                        </p>
+
+                    </div>
+
+
+                    <div class="time">
+                        HM AI
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             INPUT
+        ================================================== -->
+
+        <div class="bottom">
+
+
+            <div class="input-container">
+
+
+                <textarea
+                    id="message"
+                    rows="1"
+                    placeholder="Message HM AI..."
+                    autocomplete="off"
+                ></textarea>
+
+
+                <button
+                    class="send"
+                    id="sendButton"
+                    onclick="sendMessage()"
+                    title="Send message"
+                >
+
+                    <svg width="21"
+                         height="21"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="2">
+
+                        <path d="M22 2L11 13"/>
+
+                        <path d="M22 2l-7 20-4-9-9-4z"/>
+
+                    </svg>
+
+                </button>
+
+
+            </div>
+
+
+            <div class="input-hint">
+
+                Enter to send • Shift + Enter for new line
+
+            </div>
+
+
+        </div>
+
+
+    </main>
 
 </div>
 
@@ -529,18 +1478,72 @@ I'm HM AI. How can I help you today?
 
 <script>
 
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
 const input =
     document.getElementById("message");
 
 const chat =
     document.getElementById("chat");
 
+const sendButton =
+    document.getElementById("sendButton");
+
+const sidebar =
+    document.getElementById("sidebar");
+
+
+
+/* =====================================================
+   MARKDOWN CONFIGURATION
+===================================================== */
+
+marked.setOptions({
+
+    breaks: true,
+
+    gfm: true
+
+});
+
+
+
+/* =====================================================
+   AUTO RESIZE TEXTAREA
+===================================================== */
+
+input.addEventListener(
+    "input",
+    function() {
+
+        this.style.height = "auto";
+
+        this.style.height =
+            Math.min(
+                this.scrollHeight,
+                150
+            ) + "px";
+
+    }
+);
+
+
+
+/* =====================================================
+   ENTER / SHIFT+ENTER
+===================================================== */
 
 input.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Enter") {
+        if (
+            event.key === "Enter" &&
+            !event.shiftKey
+        ) {
 
             event.preventDefault();
 
@@ -551,6 +1554,11 @@ input.addEventListener(
     }
 );
 
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
 
 function escapeHTML(text) {
 
@@ -563,6 +1571,11 @@ function escapeHTML(text) {
 
 }
 
+
+
+/* =====================================================
+   TIME
+===================================================== */
 
 function getTime() {
 
@@ -577,13 +1590,187 @@ function getTime() {
 }
 
 
+
+/* =====================================================
+   AI AVATAR
+===================================================== */
+
+function aiAvatar() {
+
+    return `
+
+        <div class="ai-avatar">
+
+            <svg width="23"
+                 height="23"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="#69baff"
+                 stroke-width="1.8">
+
+                <rect x="4"
+                      y="7"
+                      width="16"
+                      height="12"
+                      rx="3"/>
+
+                <path d="M12 3v4"/>
+
+                <circle cx="12"
+                        cy="2.5"
+                        r="1"/>
+
+                <circle cx="9"
+                        cy="12"
+                        r="1"/>
+
+                <circle cx="15"
+                        cy="12"
+                        r="1"/>
+
+                <path d="M8 16h8"/>
+
+            </svg>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   TYPING ANIMATION
+===================================================== */
+
+function typingHTML() {
+
+    return `
+
+        <div class="typing">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   COPY BUTTON
+===================================================== */
+
+function addCopyButton(container, text) {
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "copy-button";
+
+
+    button.innerHTML = `
+
+        <svg width="14"
+             height="14"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2">
+
+            <rect x="9"
+                  y="9"
+                  width="11"
+                  height="11"
+                  rx="2"/>
+
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+
+        </svg>
+
+        Copy
+
+    `;
+
+
+    button.onclick =
+        async function() {
+
+            try {
+
+                await navigator.clipboard.writeText(text);
+
+                button.innerHTML = "✓ Copied";
+
+                setTimeout(
+                    function() {
+
+                        button.innerHTML = `
+
+                            <svg width="14"
+                                 height="14"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2">
+
+                                <rect x="9"
+                                      y="9"
+                                      width="11"
+                                      height="11"
+                                      rx="2"/>
+
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+
+                            </svg>
+
+                            Copy
+
+                        `;
+
+                    },
+                    1500
+                );
+
+            }
+
+            catch {
+
+                button.innerText =
+                    "Copy failed";
+
+            }
+
+        };
+
+
+    container.appendChild(button);
+
+}
+
+
+
+/* =====================================================
+   SEND MESSAGE
+===================================================== */
+
 async function sendMessage() {
+
 
     const message =
         input.value.trim();
 
+
     if (!message) {
+
         return;
+
     }
 
 
@@ -619,14 +1806,24 @@ async function sendMessage() {
 
     chat.appendChild(userRow);
 
+
+    /* CLEAR INPUT */
+
     input.value = "";
+
+    input.style.height = "auto";
+
 
     chat.scrollTop =
         chat.scrollHeight;
 
 
+    /* DISABLE SEND */
 
-    /* THINKING */
+    sendButton.disabled = true;
+
+
+    /* AI MESSAGE */
 
     const aiRow =
         document.createElement("div");
@@ -637,14 +1834,14 @@ async function sendMessage() {
 
     aiRow.innerHTML = `
 
-        <div class="ai-icon">
-            🤖
-        </div>
+        ${aiAvatar()}
 
         <div class="message-content">
 
             <div class="message ai-message">
-                Thinking... 🤖
+
+                ${typingHTML()}
+
             </div>
 
         </div>
@@ -654,19 +1851,22 @@ async function sendMessage() {
 
     chat.appendChild(aiRow);
 
+
     chat.scrollTop =
         chat.scrollHeight;
 
 
 
-    /* SEND TO SERVER */
+    /* ASK SERVER */
 
     try {
+
 
         const response =
             await fetch(
                 "/chat",
                 {
+
                     method: "POST",
 
                     headers: {
@@ -677,22 +1877,62 @@ async function sendMessage() {
                     body: JSON.stringify({
                         message: message
                     })
+
                 }
             );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Server error"
+            );
+
+        }
 
 
         const data =
             await response.json();
 
 
-        aiRow
-            .querySelector(".ai-message")
-            .textContent =
-            data.reply;
+        const aiMessage =
+            aiRow.querySelector(
+                ".ai-message"
+            );
 
+
+        /* MARKDOWN */
+
+        const markdownHTML =
+            marked.parse(
+                data.reply || "No response."
+            );
+
+
+        /* SANITIZE */
+
+        aiMessage.innerHTML =
+            DOMPurify.sanitize(
+                markdownHTML
+            );
+
+
+        /* COPY */
+
+        addCopyButton(
+            aiRow.querySelector(
+                ".message-content"
+            ),
+            data.reply || ""
+        );
+
+
+        /* TIME */
 
         const time =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
         time.className =
             "time";
@@ -701,26 +1941,118 @@ async function sendMessage() {
             getTime();
 
 
-        aiRow
-            .querySelector(".message-content")
-            .appendChild(time);
+        aiRow.querySelector(
+            ".message-content"
+        ).appendChild(time);
+
 
     }
+
 
     catch (error) {
 
-        aiRow
-            .querySelector(".ai-message")
-            .textContent =
-            "❌ Could not connect to HM AI.";
+
+        console.error(error);
+
+
+        aiRow.querySelector(
+            ".ai-message"
+        ).innerHTML =
+            "❌ Sorry, HM AI could not connect to the server.";
+
 
     }
+
+
+    /* ENABLE SEND */
+
+    sendButton.disabled = false;
+
+
+    input.focus();
 
 
     chat.scrollTop =
         chat.scrollHeight;
 
 }
+
+
+
+/* =====================================================
+   NEW CHAT
+===================================================== */
+
+function newChat() {
+
+    chat.innerHTML = `
+
+        <div
+            class="message-row"
+            id="welcome-message"
+        >
+
+            ${aiAvatar()}
+
+            <div class="message-content">
+
+                <div class="message ai-message">
+
+                    <p>Hello! 👋</p>
+
+                    <p>
+                        I'm <strong>HM AI</strong>.
+                        How can I help you today?
+                    </p>
+
+                </div>
+
+                <div class="time">
+                    HM AI
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    input.value = "";
+
+    input.style.height = "auto";
+
+    input.focus();
+
+}
+
+
+
+/* =====================================================
+   CLEAR CHAT
+===================================================== */
+
+function clearChat() {
+
+    chat.innerHTML = "";
+
+    input.focus();
+
+}
+
+
+
+/* =====================================================
+   MOBILE SIDEBAR
+===================================================== */
+
+function toggleSidebar() {
+
+    sidebar.classList.toggle("open");
+
+}
+
+
 
 </script>
 
