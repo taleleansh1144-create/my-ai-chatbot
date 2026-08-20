@@ -16,8 +16,13 @@ if not api_key:
 # Connect to Gemini
 client = genai.Client(api_key=api_key)
 
-# Flask application
-app = Flask(__name__)
+# Flask app
+# index.html is in the SAME folder as chatbot.py
+app = Flask(
+    __name__,
+    template_folder=".",
+    static_folder="static"
+)
 
 # Create Gemini chat
 chat = client.chats.create(
@@ -25,28 +30,13 @@ chat = client.chats.create(
 )
 
 
-# -----------------------------
 # HOME PAGE
-# -----------------------------
-
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
-# -----------------------------
-# LOGO TEST
-# -----------------------------
-
-@app.route("/logo")
-def logo():
-    return app.send_static_file("hm-ai-logo.png")
-
-
-# -----------------------------
 # AI CHAT
-# -----------------------------
-
 @app.route("/chat", methods=["POST"])
 def chat_message():
 
@@ -57,14 +47,14 @@ def chat_message():
         if not data:
             return jsonify({
                 "reply": "Please type a message."
-            }), 400
+            })
 
         user_message = data.get("message", "").strip()
 
         if not user_message:
             return jsonify({
                 "reply": "Please type a message."
-            }), 400
+            })
 
         # Send message to Gemini
         response = chat.send_message(
@@ -81,21 +71,20 @@ def chat_message():
 
     except Exception as e:
 
-        print("Gemini error:", e)
+        print("Gemini Error:", e)
 
         return jsonify({
-            "reply": "Sorry, something went wrong with HM AI."
+            "reply": "Sorry, HM AI could not process your message."
         }), 500
 
 
-# -----------------------------
 # START SERVER
-# -----------------------------
-
 if __name__ == "__main__":
+
+    port = int(os.environ.get("PORT", 5000))
 
     app.run(
         host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
+        port=port,
         debug=False
     )
