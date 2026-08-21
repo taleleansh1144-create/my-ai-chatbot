@@ -8,14 +8,11 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>HM AI</title>
+<title>NOVI AI</title>
 
-<!-- Markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-<!-- Security -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
-
 
 <style>
 
@@ -25,42 +22,55 @@
 
 html,
 body {
+
     margin: 0;
+
     width: 100%;
     height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: #05070d;
+
     color: white;
 }
 
 body {
+
     overflow: hidden;
 }
 
 
-/* =====================================================
+/* =========================
    APP
-===================================================== */
+========================= */
 
 .app {
+
     display: flex;
+
     width: 100%;
     height: 100vh;
 }
 
 
-/* =====================================================
+/* =========================
    SIDEBAR
-===================================================== */
+========================= */
 
 .sidebar {
 
-    width: 260px;
+    width: 270px;
+
     height: 100%;
 
     padding: 18px;
 
     display: flex;
+
     flex-direction: column;
 
     background: #090d16;
@@ -72,9 +82,14 @@ body {
 }
 
 
+/* =========================
+   LOGO
+========================= */
+
 .logo {
 
     display: flex;
+
     align-items: center;
 
     gap: 10px;
@@ -82,13 +97,13 @@ body {
     margin-bottom: 22px;
 }
 
-
 .logo-icon {
 
-    width: 44px;
-    height: 44px;
+    width: 45px;
+    height: 45px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -100,23 +115,35 @@ body {
             #1599ff,
             #713cff
         );
-}
 
+    font-size: 23px;
+}
 
 .logo-text {
 
-    font-size: 20px;
+    font-size: 21px;
+
     font-weight: bold;
 }
 
-
 .logo-small {
 
-    font-size: 9px;
+    font-size: 8px;
+
     letter-spacing: 2px;
+
     color: #77839b;
 }
 
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+
+    font-family: inherit;
+}
 
 .new-chat,
 .clear-chat {
@@ -127,13 +154,6 @@ body {
 
     border-radius: 12px;
 
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-    gap: 8px;
-
     cursor: pointer;
 
     color: white;
@@ -141,10 +161,10 @@ body {
     transition: 0.2s;
 }
 
-
 .new-chat {
 
-    border: 1px solid #344d9c;
+    border:
+        1px solid #344d9c;
 
     background:
         linear-gradient(
@@ -154,16 +174,16 @@ body {
         );
 }
 
-
 .new-chat:hover {
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
-
 
 .clear-chat {
 
-    border: 1px solid #4b2730;
+    border:
+        1px solid #4b2730;
 
     background: #170d12;
 
@@ -172,6 +192,10 @@ body {
     margin-top: 10px;
 }
 
+
+/* =========================
+   HISTORY
+========================= */
 
 .history-title {
 
@@ -188,14 +212,12 @@ body {
     letter-spacing: 1px;
 }
 
-
 .history {
 
     flex: 1;
 
     overflow-y: auto;
 }
-
 
 .history-item {
 
@@ -218,20 +240,19 @@ body {
     text-overflow: ellipsis;
 }
 
-
 .history-item:hover {
 
     background: #141b2a;
+
     color: white;
 }
-
 
 .history-item.active {
 
     background: #17223a;
+
     color: white;
 }
-
 
 .footer {
 
@@ -245,9 +266,9 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    MAIN
-===================================================== */
+========================= */
 
 .main {
 
@@ -256,15 +277,16 @@ body {
     min-width: 0;
 
     display: flex;
+
     flex-direction: column;
 
     height: 100%;
 }
 
 
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 .header {
 
@@ -273,6 +295,7 @@ body {
     flex-shrink: 0;
 
     display: flex;
+
     align-items: center;
 
     padding: 10px 22px;
@@ -282,7 +305,6 @@ body {
 
     background: #080c15;
 }
-
 
 .mobile-menu {
 
@@ -294,9 +316,10 @@ body {
 
     color: white;
 
-    margin-right: 10px;
-}
+    font-size: 22px;
 
+    cursor: pointer;
+}
 
 .header-icon {
 
@@ -316,17 +339,18 @@ body {
             #1599ff,
             #713cff
         );
-}
 
+    font-size: 22px;
+}
 
 .header-name {
 
     margin-left: 12px;
 
     font-size: 20px;
+
     font-weight: bold;
 }
-
 
 .status {
 
@@ -336,7 +360,6 @@ body {
 
     font-size: 11px;
 }
-
 
 .status-dot {
 
@@ -356,9 +379,9 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    CHAT
-===================================================== */
+========================= */
 
 .chat {
 
@@ -369,7 +392,6 @@ body {
     padding:
         30px 7% 25px;
 }
-
 
 .message-row {
 
@@ -383,26 +405,29 @@ body {
         messageIn 0.25s ease;
 }
 
-
 @keyframes messageIn {
 
     from {
+
         opacity: 0;
-        transform: translateY(8px);
+
+        transform:
+            translateY(8px);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
-
 
 .message-row.user {
 
     justify-content: flex-end;
 }
-
 
 .avatar {
 
@@ -420,21 +445,22 @@ body {
 
     background: #101d35;
 
-    border: 1px solid #315a91;
+    border:
+        1px solid #315a91;
 
     margin-right: 10px;
 }
 
-
 .content {
 
-    max-width: min(800px, 82%);
+    max-width:
+        min(800px, 82%);
 }
-
 
 .message {
 
-    padding: 14px 17px;
+    padding:
+        14px 17px;
 
     border-radius: 16px;
 
@@ -442,9 +468,9 @@ body {
 
     font-size: 15px;
 
-    overflow-wrap: anywhere;
+    overflow-wrap:
+        anywhere;
 }
-
 
 .ai-message {
 
@@ -461,7 +487,6 @@ body {
     border-top-left-radius: 4px;
 }
 
-
 .user-message {
 
     background:
@@ -474,7 +499,6 @@ body {
     border-top-right-radius: 4px;
 }
 
-
 .time {
 
     margin-top: 5px;
@@ -485,23 +509,23 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    MARKDOWN
-===================================================== */
+========================= */
 
 .ai-message p {
+
     margin: 7px 0;
 }
-
 
 .ai-message h1,
 .ai-message h2,
 .ai-message h3 {
 
     margin-top: 14px;
+
     margin-bottom: 8px;
 }
-
 
 .ai-message ul,
 .ai-message ol {
@@ -509,16 +533,15 @@ body {
     padding-left: 25px;
 }
 
-
 .ai-message li {
 
     margin: 4px 0;
 }
 
-
 .ai-message code {
 
-    padding: 3px 6px;
+    padding:
+        3px 6px;
 
     border-radius: 5px;
 
@@ -526,11 +549,12 @@ body {
 
     color: #8bdcff;
 
-    font-family: Consolas, monospace;
+    font-family:
+        Consolas,
+        monospace;
 
     font-size: 13px;
 }
-
 
 .ai-message pre {
 
@@ -542,9 +566,9 @@ body {
 
     background: #050912;
 
-    border: 1px solid #202b40;
+    border:
+        1px solid #202b40;
 }
-
 
 .ai-message pre code {
 
@@ -555,16 +579,15 @@ body {
     color: #dce7fa;
 }
 
-
 .ai-message blockquote {
 
-    border-left: 3px solid #637cff;
+    border-left:
+        3px solid #637cff;
 
     padding-left: 12px;
 
     color: #aab4c7;
 }
-
 
 .ai-message a {
 
@@ -572,19 +595,21 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    COPY
-===================================================== */
+========================= */
 
 .copy {
 
     margin-top: 8px;
 
-    padding: 6px 10px;
+    padding:
+        6px 10px;
 
     border-radius: 8px;
 
-    border: 1px solid #27344b;
+    border:
+        1px solid #27344b;
 
     background: #0c121e;
 
@@ -595,16 +620,15 @@ body {
     font-size: 11px;
 }
 
-
 .copy:hover {
 
     color: white;
 }
 
 
-/* =====================================================
+/* =========================
    TYPING
-===================================================== */
+========================= */
 
 .typing {
 
@@ -612,7 +636,6 @@ body {
 
     gap: 5px;
 }
-
 
 .typing span {
 
@@ -627,34 +650,41 @@ body {
         typing 1.2s infinite;
 }
 
-
 .typing span:nth-child(2) {
-    animation-delay: .15s;
-}
 
+    animation-delay:
+        .15s;
+}
 
 .typing span:nth-child(3) {
-    animation-delay: .3s;
-}
 
+    animation-delay:
+        .3s;
+}
 
 @keyframes typing {
 
-    0%,60%,100% {
+    0%, 60%, 100% {
+
         opacity: .25;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     30% {
+
         opacity: 1;
-        transform: translateY(-4px);
+
+        transform:
+            translateY(-4px);
     }
 }
 
 
-/* =====================================================
+/* =========================
    INPUT
-===================================================== */
+========================= */
 
 .bottom {
 
@@ -663,7 +693,6 @@ body {
 
     flex-shrink: 0;
 }
-
 
 .input-box {
 
@@ -675,7 +704,8 @@ body {
 
     align-items: flex-end;
 
-    padding: 8px 8px 8px 15px;
+    padding:
+        8px 8px 8px 15px;
 
     border:
         1px solid #354f9c;
@@ -684,7 +714,6 @@ body {
 
     background: #0c1423;
 }
-
 
 textarea {
 
@@ -708,15 +737,14 @@ textarea {
 
     max-height: 150px;
 
-    padding: 8px 5px;
+    padding:
+        8px 5px;
 }
-
 
 textarea::placeholder {
 
     color: #657087;
 }
-
 
 .send {
 
@@ -738,18 +766,13 @@ textarea::placeholder {
 
     cursor: pointer;
 
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
+    font-size: 18px;
 }
-
 
 .send:disabled {
 
     opacity: .5;
 }
-
 
 .hint {
 
@@ -763,9 +786,9 @@ textarea::placeholder {
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media (max-width: 800px) {
 
@@ -784,24 +807,23 @@ textarea::placeholder {
         transition: .25s;
     }
 
-
     .sidebar.open {
 
         left: 0;
     }
 
-
     .mobile-menu {
 
         display: block;
-    }
 
+        margin-right: 10px;
+    }
 
     .header {
 
-        padding: 8px 12px;
+        padding:
+            8px 12px;
     }
-
 
     .chat {
 
@@ -809,25 +831,21 @@ textarea::placeholder {
             20px 10px;
     }
 
-
     .content {
 
         max-width: 88%;
     }
-
 
     .message {
 
         font-size: 14px;
     }
 
-
     .bottom {
 
         padding:
             7px 8px;
     }
-
 
     .hint {
 
@@ -846,29 +864,27 @@ textarea::placeholder {
 <div class="app">
 
 
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
+<!-- SIDEBAR -->
 
-<aside class="sidebar" id="sidebar">
-
+<aside
+    class="sidebar"
+    id="sidebar"
+>
 
     <div class="logo">
 
         <div class="logo-icon">
-
             🤖
-
         </div>
 
         <div>
 
             <div class="logo-text">
-                HM AI
+                NOVI AI
             </div>
 
             <div class="logo-small">
-                HUMAN MADE AI
+                YOUR AI ASSISTANT
             </div>
 
         </div>
@@ -881,13 +897,15 @@ textarea::placeholder {
         onclick="newChat()"
     >
 
-        ＋ New Chat
+        💬 New Chat
 
     </button>
 
 
     <div class="history-title">
+
         Chat History
+
     </div>
 
 
@@ -902,29 +920,26 @@ textarea::placeholder {
         onclick="clearCurrentChat()"
     >
 
-        🗑 Clear Chat
+        🗑️ Clear Chat
 
     </button>
 
 
     <div class="footer">
-        HM AI
-    </div>
 
+        NOVI AI
+
+    </div>
 
 </aside>
 
 
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
+<!-- MAIN -->
 
 <main class="main">
 
 
 <header class="header">
-
 
     <button
         class="mobile-menu"
@@ -937,16 +952,12 @@ textarea::placeholder {
 
 
     <div class="header-icon">
-
         🤖
-
     </div>
 
 
     <div class="header-name">
-
-        HM AI
-
+        NOVI AI
     </div>
 
 
@@ -958,9 +969,7 @@ textarea::placeholder {
 
     </div>
 
-
 </header>
-
 
 
 <section
@@ -969,17 +978,14 @@ textarea::placeholder {
 ></section>
 
 
-
 <div class="bottom">
 
-
     <div class="input-box">
-
 
         <textarea
             id="message"
             rows="1"
-            placeholder="Message HM AI..."
+            placeholder="Message NOVI AI..."
         ></textarea>
 
 
@@ -993,7 +999,6 @@ textarea::placeholder {
 
         </button>
 
-
     </div>
 
 
@@ -1003,7 +1008,6 @@ textarea::placeholder {
 
     </div>
 
-
 </div>
 
 
@@ -1012,13 +1016,8 @@ textarea::placeholder {
 </div>
 
 
-
 <script>
 
-
-/* =====================================================
-   VARIABLES
-===================================================== */
 
 const chat =
     document.getElementById("chat");
@@ -1039,11 +1038,6 @@ const sidebar =
 let currentChatId = null;
 
 
-
-/* =====================================================
-   MARKDOWN
-===================================================== */
-
 marked.setOptions({
 
     breaks: true,
@@ -1052,11 +1046,6 @@ marked.setOptions({
 
 });
 
-
-
-/* =====================================================
-   TIME
-===================================================== */
 
 function timeNow() {
 
@@ -1071,11 +1060,6 @@ function timeNow() {
 }
 
 
-
-/* =====================================================
-   AI AVATAR
-===================================================== */
-
 function avatar() {
 
     return `
@@ -1086,11 +1070,6 @@ function avatar() {
 
 }
 
-
-
-/* =====================================================
-   WELCOME
-===================================================== */
 
 function welcome() {
 
@@ -1107,14 +1086,14 @@ function welcome() {
                     <p>Hello! 👋</p>
 
                     <p>
-                        I'm <strong>HM AI</strong>.
+                        I'm <strong>NOVI AI</strong>.
                         How can I help you today?
                     </p>
 
                 </div>
 
                 <div class="time">
-                    HM AI
+                    NOVI AI
                 </div>
 
             </div>
@@ -1125,11 +1104,6 @@ function welcome() {
 
 }
 
-
-
-/* =====================================================
-   LOAD CHAT HISTORY
-===================================================== */
 
 async function loadHistory() {
 
@@ -1146,7 +1120,9 @@ async function loadHistory() {
         chats.forEach(item => {
 
             const div =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             div.className =
                 "history-item";
@@ -1154,21 +1130,25 @@ async function loadHistory() {
             div.textContent =
                 item.title || "New Chat";
 
-            div.onclick =
-                () => loadChat(item.id);
+            if (
+                item.id ===
+                currentChatId
+            ) {
 
-            if (item.id === currentChatId) {
-
-                div.classList.add("active");
+                div.classList.add(
+                    "active"
+                );
 
             }
+
+            div.onclick =
+                () => loadChat(item.id);
 
             history.appendChild(div);
 
         });
 
     }
-
     catch(error) {
 
         console.error(
@@ -1180,11 +1160,6 @@ async function loadHistory() {
 
 }
 
-
-
-/* =====================================================
-   LOAD SPECIFIC CHAT
-===================================================== */
 
 async function loadChat(chatId) {
 
@@ -1214,7 +1189,9 @@ async function loadChat(chatId) {
             }
         );
 
-        if (data.messages.length === 0) {
+        if (
+            data.messages.length === 0
+        ) {
 
             welcome();
 
@@ -1230,7 +1207,6 @@ async function loadChat(chatId) {
             chat.scrollHeight;
 
     }
-
     catch(error) {
 
         console.error(
@@ -1243,11 +1219,6 @@ async function loadChat(chatId) {
 }
 
 
-
-/* =====================================================
-   ADD MESSAGE
-===================================================== */
-
 function addMessage(
     role,
     text
@@ -1258,12 +1229,13 @@ function addMessage(
             "div"
         );
 
-
     row.className =
         "message-row " +
-        (role === "user"
+        (
+            role === "user"
             ? "user"
-            : "");
+            : ""
+        );
 
 
     const content =
@@ -1289,13 +1261,14 @@ function addMessage(
         );
 
 
-    if (role === "assistant") {
-
-        const html =
-            marked.parse(text);
+    if (
+        role === "assistant"
+    ) {
 
         message.innerHTML =
-            DOMPurify.sanitize(html);
+            DOMPurify.sanitize(
+                marked.parse(text)
+            );
 
 
         const copy =
@@ -1313,7 +1286,8 @@ function addMessage(
         copy.onclick =
             async () => {
 
-                await navigator.clipboard
+                await navigator
+                    .clipboard
                     .writeText(text);
 
                 copy.textContent =
@@ -1341,7 +1315,6 @@ function addMessage(
         );
 
     }
-
     else {
 
         message.textContent =
@@ -1371,25 +1344,19 @@ function addMessage(
     );
 
 
-    if (role === "assistant") {
+    if (
+        role === "assistant"
+    ) {
 
         row.innerHTML =
             avatar();
 
-        row.appendChild(
-            content
-        );
-
     }
 
-    else {
 
-        row.appendChild(
-            content
-        );
-
-    }
-
+    row.appendChild(
+        content
+    );
 
     chat.appendChild(
         row
@@ -1397,11 +1364,6 @@ function addMessage(
 
 }
 
-
-
-/* =====================================================
-   TYPING
-===================================================== */
 
 function showTyping() {
 
@@ -1440,21 +1402,13 @@ function showTyping() {
     `;
 
 
-    chat.appendChild(
-        row
-    );
-
+    chat.appendChild(row);
 
     chat.scrollTop =
         chat.scrollHeight;
 
 }
 
-
-
-/* =====================================================
-   SEND
-===================================================== */
 
 async function sendMessage() {
 
@@ -1485,11 +1439,11 @@ async function sendMessage() {
         true;
 
 
+    showTyping();
+
+
     chat.scrollTop =
         chat.scrollHeight;
-
-
-    showTyping();
 
 
     try {
@@ -1539,10 +1493,7 @@ async function sendMessage() {
         }
 
 
-        if (
-            data.chat_id &&
-            !currentChatId
-        ) {
+        if (data.chat_id) {
 
             currentChatId =
                 data.chat_id;
@@ -1558,9 +1509,7 @@ async function sendMessage() {
 
         await loadHistory();
 
-
     }
-
     catch(error) {
 
         console.error(error);
@@ -1580,7 +1529,7 @@ async function sendMessage() {
 
         addMessage(
             "assistant",
-            "❌ Sorry, I couldn't connect to HM AI."
+            "❌ NOVI AI could not connect."
         );
 
     }
@@ -1589,20 +1538,13 @@ async function sendMessage() {
     sendButton.disabled =
         false;
 
-
     input.focus();
-
 
     chat.scrollTop =
         chat.scrollHeight;
 
 }
 
-
-
-/* =====================================================
-   NEW CHAT
-===================================================== */
 
 async function newChat() {
 
@@ -1639,7 +1581,6 @@ async function newChat() {
         );
 
     }
-
     catch(error) {
 
         console.error(error);
@@ -1648,11 +1589,6 @@ async function newChat() {
 
 }
 
-
-
-/* =====================================================
-   CLEAR CURRENT CHAT
-===================================================== */
 
 async function clearCurrentChat() {
 
@@ -1686,7 +1622,6 @@ async function clearCurrentChat() {
         await loadHistory();
 
     }
-
     catch(error) {
 
         console.error(error);
@@ -1695,11 +1630,6 @@ async function clearCurrentChat() {
 
 }
 
-
-
-/* =====================================================
-   ENTER
-===================================================== */
 
 input.addEventListener(
     "keydown",
@@ -1720,11 +1650,6 @@ input.addEventListener(
 );
 
 
-
-/* =====================================================
-   AUTO RESIZE
-===================================================== */
-
 input.addEventListener(
     "input",
     function() {
@@ -1742,11 +1667,6 @@ input.addEventListener(
 );
 
 
-
-/* =====================================================
-   MOBILE SIDEBAR
-===================================================== */
-
 function toggleSidebar() {
 
     sidebar.classList.toggle(
@@ -1755,11 +1675,6 @@ function toggleSidebar() {
 
 }
 
-
-
-/* =====================================================
-   START
-===================================================== */
 
 async function startApp() {
 
@@ -1781,7 +1696,6 @@ async function startApp() {
         );
 
     }
-
     else {
 
         welcome();
@@ -1796,4 +1710,5 @@ startApp();
 </script>
 
 </body>
+
 </html>
